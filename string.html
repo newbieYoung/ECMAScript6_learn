@@ -8,27 +8,59 @@
 	<script type="text/javascript">
 	'use strict';
 	//JavaScript允许采用\uxxxx形式表示一个字符，但是，这种表示法只限于\u0000——\uFFFF之间的字符。超出这个范围的字符，必须用两个双字节的形式表达。
-	console.log('\uD842\uDFB7');
+	{
+		console.log('\uD842\uDFB7');
+	}
 
 	//ES6中只要将码点放入大括号，就能按Unicode正确解读该字符
-	let hello = 123;
-	console.log(hell\u{6F});
-	console.log('\u{1F680}' === '\uD83D\uDE80');
+	{
+		let hello = 123;
+		console.log(hell\u{6F});
+		console.log('\u{1F680}' === '\uD83D\uDE80');
+	}
 
 	//JavaScript内部，字符以UTF-16的格式储存，每个字符固定为2个字节。对于那些需要4个字节储存的字符（Unicode码点大于0xFFFF的字符），JavaScript会认为它们是两个字符。
-	let str1 = '𠮷';//汉字“𠮷”的码点是0x20BB7（十进制为134071），UTF-16编码为0xD842 0xDFB7（十进制为55362 57271）
-	console.log(str1.length);
-	console.log(str1.charAt(0));
-	console.log(str1.charAt(1));
-	console.log(str1.charCodeAt(0));//55362
-	console.log(str1.charCodeAt(1));//57271
-	//codePointAt方法是测试一个字符由两个字节还是由四个字节组成的最简单方法
-	console.log(str1.codePointAt(0));//134071
-	let str2 = '我';//也就是说有的汉字长度算1有的算2
-	console.log(str2.length);
-	console.log(str2.charAt(0));
-	console.log(str2.charCodeAt(0));
-	console.log(str2.codePointAt(0));//对于那些两个字节储存的常规字符，codePointAt的返回结果与charCodeAt方法相同
+	{
+		let str1 = '𠮷';//汉字“𠮷”的码点是0x20BB7（十进制为134071），UTF-16编码为0xD842 0xDFB7（十进制为55362 57271）
+		console.log(str1.length);
+		console.log(str1.charAt(0));
+		console.log(str1.charAt(1));
+		console.log(str1.charCodeAt(0));//55362
+		console.log(str1.charCodeAt(1));//57271
+		//codePointAt方法是测试一个字符由两个字节还是由四个字节组成的最简单方法
+		console.log(str1.codePointAt(0));//134071
+		let str2 = '我';//也就是说有的汉字长度算1有的算2
+		console.log(str2.length);
+		console.log(str2.charAt(0));
+		console.log(str2.charCodeAt(0));
+		console.log(str2.codePointAt(0));//对于那些两个字节储存的常规字符，codePointAt的返回结果与charCodeAt方法相同
+		console.log(String.fromCharCode(134071));
+		console.log(String.fromCodePoint(134071));
+	}
+	
+	//字符串遍历接口
+	{
+		let str = '我𠮷';
+		//正常遍历不能识别Unicode码点大于0xFFFF的字符
+		for(let i=0;i<str.length;i++){
+			console.log(str[i]);
+			console.log(str.charAt(i));
+			//console.log(str.at(i));//字符串的at方法暂时未得到支持
+		}
+		//for of遍历可以识别Unicode码点大于0xFFFF的字符
+		for(let str of '我𠮷'){
+			console.log(str);
+		}
+	}
+	
+	//includes(), startsWith(), endsWith()
+	{
+		let str = 'hello world!';
+		console.log(str.indexOf('hello'));
+		console.log(str.includes('hello'));
+		console.log(str.startsWith('hello'));
+		console.log(str.endsWith('world!'));
+	}
 	</script>
 </body>
 </html>
