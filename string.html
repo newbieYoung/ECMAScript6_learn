@@ -37,7 +37,7 @@
 		console.log(String.fromCharCode(134071));
 		console.log(String.fromCodePoint(134071));
 	}
-	
+
 	//字符串遍历接口
 	{
 		let str = '我𠮷';
@@ -52,7 +52,7 @@
 			console.log(str);
 		}
 	}
-	
+
 	//includes(), startsWith(), endsWith()
 	{
 		let str = 'hello world!';
@@ -60,6 +60,39 @@
 		console.log(str.includes('hello'));
 		console.log(str.startsWith('hello'));
 		console.log(str.endsWith('world!'));
+		//这三个方法都支持第二个参数
+		console.log(str.startsWith('llo',2));//第二个参数n表示从第n个位置开始
+		console.log(str.includes('llo',2));
+		console.log(str.endsWith('llo',5));//第二个参数n表示以第n个位置为截止
+	}
+
+	//repeat()
+	{
+		console.log('hello'.repeat(3));
+		console.log('小数会被取整'.repeat(2.2));//小数会被取整，其它不能转换成正整数的类型（比如：负整数、Infinity）就会报错
+		console.log('NaN会被当成0'.repeat(NaN));//NaN会被当成0处理，某个字符串重复0次得到空字符串''
+	}
+
+	//模版字符串，是增强版的字符串，用反引号（`）标识
+	{
+		console.log(`可以用来处理多行
+			字符串`);
+		console.log(`可以当成普通字符串`+'来处理');
+		let ke = '可';
+		let yi = '以';
+		console.log(`${ke}${yi}嵌入变量`);
+		console.log(`使用\`\$\{\}等模版字符串中的特殊字符需要使用反斜杠`);
+		//注意模版字符串中声明变量会报错
+		console.log(`大括号中可以放入任意JavaScript表达式，甚至是执行函数${setTimeout(function(){console.log('setTimeout');},1000)}`);
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		Person.prototype.toString = function(){//重写toString()方法
+			return 'My name is '+this.name+' and I am '+this.age+' years old';
+		}
+		var liy = new Person('liy',24);
+		console.log(`如果大括号中是对象则会默认调用对象的toString()方法${liy}`);
 	}
 	</script>
 </body>
