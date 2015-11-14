@@ -91,8 +91,37 @@
 		Person.prototype.toString = function(){//重写toString()方法
 			return 'My name is '+this.name+' and I am '+this.age+' years old';
 		}
-		var liy = new Person('liy',24);
+		let liy = new Person('liy',24);
 		console.log(`如果大括号中是对象则会默认调用对象的toString()方法${liy}`);
+	
+		console.log(`如果大括号里边的是字符串则${'照原样输出'}`);
+		//使用函数在模版字符串中实现循环
+		let data = { supplies: [ "broom", "mop", "cleaner" ] };
+		function compile(data){
+			var template = '';
+			for(let i=0; i < data.supplies.length; i++) {
+				template += `<li>${data.supplies[i]}</li>`;
+			}
+			return template;
+		}
+		let template = `<ul>${compile(data)}</ul>`;
+		console.log(template);
+	}
+
+	{
+		//标签模版其实不是模板，而是函数调用的一种特殊形式；“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。
+		let a = 4;
+		let b = 3;
+		let str = `Hello ${ a + b } world ${ a * b}`;
+		function tag(s,a,b){
+			console.log(s);
+			console.log(s[0]);
+			console.log(s[1]);
+			console.log(s[2]);
+			console.log(a);
+			console.log(b);
+		}
+		tag`Hello ${ a + b } world ${ a * b}`;
 	}
 	</script>
 </body>
