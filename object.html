@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>objetct</title>
+</head>
+<body>
+	<script type="text/javascript">
+		'use strict';
+		//__proto__
+		{
+			function Employee() {
+			
+			}
+			Employee.prototype.company = 'futu';
+			let young = new Employee();
+			//__proto__ 属性是否等于对象构造函数的prototype属性
+			console.log(young.__proto__===Employee.prototype);
+			//更改原型中的属性
+			young.__proto__.company = 'futu.web';
+			console.log(Employee.prototype.company);
+			//重新指定原型
+			let country = {
+				country:'China'
+			}
+			young.__proto__ = country;
+			console.log(young.__proto__===Employee.prototype);
+		}
+		//getPrototypeOf、setPrototypeOf
+		{
+			function Employee(){
+
+			}
+			Employee.prototype.company = 'futu';
+			let young = new Employee();
+			let proto = Object.getPrototypeOf(young);
+			proto.company = 'futu.web';
+			console.log(Employee.prototype.company);
+			Object.setPrototypeOf(young,{
+				country:'China'
+			});
+			console.log(Object.getPrototypeOf(young).country);
+		}
+		//observe、unobserve
+		{
+			var o = {};
+			function observer(changes){
+				changes.forEach(function(change) {
+					console.log('发生变动的属性：' + change.name);
+					console.log('变动前的值：' + change.oldValue);
+					console.log('变动后的值：' + change.object[change.name]);
+					console.log('变动类型：' + change.type);
+				});
+			}
+			//监听
+			Object.observe(o, observer);
+			//变化
+			setTimeout(function(){
+				o.name = 'liy';
+			},1000);
+		}
+	</script>
+</body>
+</html>
