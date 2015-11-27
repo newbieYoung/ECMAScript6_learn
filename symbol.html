@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>symbol</title>
+</head>
+<body>
+	<script type="text/javascript">
+	'use strict';
+	//Symbol是一种类似于字符串的数据类型
+	{
+		let s = Symbol();
+		console.log(typeof s);
+		//let a = new Symbol();//Symbol函数前不能使用new命令，否则会报错
+		//s.type = 'Symbol';//由于Symbol值不是对象，所以不能添加属性
+		//Symbol函数可以接受一个字符串作为参数，表示对Symbol实例的描述，主要是为了在控制台显示，或者转为字符串时，比较容易区分
+		let a = Symbol('a');
+		let b = Symbol('a');
+		console.log(a.toString()+' '+b.toString());
+		console.log(a===b);//Symbol函数的参数只是表示对当前Symbol值的描述，因此相同参数的Symbol函数的返回值是不相等的
+		//Symbol值不能与其他类型的值进行运算，会报错
+		//console.log(`a symbol is ${a}`);
+		//Symbol值可以显式转为字符串
+		console.log(a.toString());
+	}
+	</script>
+</body>
+</html>
