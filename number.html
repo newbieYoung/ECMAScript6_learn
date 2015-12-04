@@ -61,10 +61,12 @@
 		//ES6引入了Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER这两个常量，用来表示这个范围的上下限。
 		//Number.isSafeInteger()则是用来判断一个整数是否落在这个范围之内。
 		{
+			console.log('Number.isSafeInteger、Number.MAX_SAFE_INTEGER、Number.MIN_SAFE_INTEGER');
 			console.log(Number.MAX_SAFE_INTEGER === Math.pow(2, 53) - 1);
 			console.log(Number.MIN_SAFE_INTEGER === -(Math.pow(2, 53) - 1));
 			console.log(Number.isSafeInteger('a')); // false
 			console.log(Number.isSafeInteger(null)); // false
+			console.log(typeof NaN);
 			console.log(Number.isSafeInteger(NaN)); // false
 			console.log(Number.isSafeInteger(Infinity)); // false
 			console.log(Number.isSafeInteger(-Infinity)); // false
