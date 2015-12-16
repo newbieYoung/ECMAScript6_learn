@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>iterator</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    'use strict';
+    /**
+     * Iterator的作用有三个：一是为各种数据结构，提供一个统一的、简便的访问接口；二是使得数据结构
+     * 的成员能够按某种次序排列；三是ES6创造了一种新的遍历命令for...o
+     * f循环，Iterator接口主要供for...of消费。
+     * ES6规定，默认的Iterator接口部署在数据结构的Symbol.iterator属性。
+     * */
+    //数组iterator使用示例
+    {
+    	console.log('数组iterator使用示例');
+        let array = ['a', 'b', 'c'];
+        let iterator = array[Symbol.iterator]();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+    }
+    //类数组对象添加自定义iterator示例
+    {
+    	console.log('类数组iterator使用示例');
+    	let likeArray = {
+    		0:'a',
+    		1:'b',
+    		2:'c',
+    		length:3,
+    		[Symbol.iterator]:Array.prototype[Symbol.iterator]
+    	}
+    	let iterator = likeArray[Symbol.iterator]();
+    	console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+    }
+    //为某对象添加自定义iterator示例
+    {
+        console.log('为某对象添加自定义iterator示例');
+        let obj = {
+            data: ['hello', 'world'],
+            [Symbol.iterator]: function() {
+                let self = this;
+                let index = 0;
+                return {
+                	next:function(){
+                		if(index<self.data.length){
+                			return {
+                				value:self.data[index++],
+                				done:false
+                			}
+                		}else{
+                			return {
+                				value:undefined,
+                				done:true
+                			}
+                		}
+                	}
+                }
+            }
+        };
+        let iterator = obj[Symbol.iterator]();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+    }
+    </script>
+</body>
+
+</html>

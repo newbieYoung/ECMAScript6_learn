@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>number扩展</title>
+	<title>number</title>
 </head>
 <body>
 	<script type="text/javascript">
@@ -84,13 +84,16 @@
 
 		//ES6在Math对象上新增了17个与数学相关的方法
 		{
+			console.log('Math方法');
 			//Math.trunc方法用于去除一个数的小数部分，返回整数部分
 			console.log(Math.trunc(4.312));
+			//Math.round四舍五入返回整数
+			console.log(Math.round(1234.56));
 			//Math.sign方法用来判断一个数到底是正数、负数、还是零
 			console.log(Math.sign(-4));
 			console.log(Math.sign(4));
 			console.log(Math.sign(1.23));
-			console.log(Math.sign(-0.123));
+			console.log(Math.sign(-0.123));	
 		}
 	</script>
 </body>
