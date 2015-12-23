@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试Google公司的ES6转码器Traceur</title>
+</head>
+<body>
+	
+</body>
+<!-- 加载Traceur编译器 -->
+<script src="http://google.github.io/traceur-compiler/bin/traceur.js"
+        type="text/javascript"></script>
+<!-- 将Traceur编译器用于网页 -->
+<script src="http://google.github.io/traceur-compiler/src/bootstrap.js"
+        type="text/javascript"></script>
+<script type="module">
+    class Calc {
+        constructor(){
+            console.log('Calc constructor');
+        }
+        add(a, b){
+            return a + b;
+        }
+    }
+    var c = new Calc();
+    console.log(c.add(4,5));
+</script>
+</html>

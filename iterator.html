@@ -71,6 +71,17 @@
         console.log(iterator.next());
         console.log(iterator.next());
     }
+    //字符串的iterator接口
+    {
+        console.log('字符串的iterator接口');
+        let str = 'hello';
+        let iterator = str[Symbol.iterator]();
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+    }
     </script>
 </body>
 
