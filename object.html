@@ -7,6 +7,21 @@
 <body>
 	<script type="text/javascript">
 		'use strict';
+		//prototype
+		{
+			function UiDatePicker(){
+
+			}
+			UiDatePicker.prototype.result = [];
+			UiDatePicker.prototype.name = 'ui-datepicker';
+			let picker1 = new UiDatePicker();
+			picker1.name = 'picker1';//直接赋值会在当前实例中新增一个属性
+			picker1.result.push(0);//如果没有赋值则会遍历到原型链中的属性
+			console.log(picker1);
+			let picker2 = new UiDatePicker();
+			console.log(picker2.result);//由于picker1修改了原型中的result属性，而picker2实例中没有创建result属性，所以这里会访问原型中的属性
+			console.log(picker2.name);
+		}
 		//__proto__
 		{
 			function Employee() {
