@@ -7,6 +7,16 @@
 <body>
 	<script type="text/javascript">
 		'use strict';
+		//Object.create
+		{
+			function person(name){
+				this.name = name;
+			}
+			let liy = new person('liy');
+			let createLiy = Object.create(liy);
+			console.log(createLiy.__proto__);
+			console.log(createLiy.__proto__===liy);
+		}
 		//测试Object和Function之间的关系
 		{
 			console.log(Object.__proto__.constructor);

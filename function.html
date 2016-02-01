@@ -21,8 +21,8 @@
 		}
 		function f(x) {
 			'use strict';
-			f.caller;
-  			f.arguments;
+			//f.caller;
+  			//f.arguments;
 			if (x > 0) {
 				return m(x);//尾调用
 			}
@@ -31,28 +31,28 @@
 		f(5);
 		//以下三种情况不属于尾调用
 		//情况一
-		function f(x){
-			let y = g(x);
-			return y;
-		}
-		//情况二
-		function f(x){
-			return g(x) + 1;
-		}
-		//情况三
-		function f(x){
-			g(x);
-		}
-		//情况二等同于
-		function f(x){
-			let y = g(x)+1;
-			return y;
-		}
-		//情况三等同于
-		function f(x){
-			g(x);
-			return undefined;
-		}
+		// function f(x){
+		// 	let y = g(x);
+		// 	return y;
+		// }
+		// //情况二
+		// function f(x){
+		// 	return g(x) + 1;
+		// }
+		// //情况三
+		// function f(x){
+		// 	g(x);
+		// }
+		// //情况二等同于
+		// function f(x){
+		// 	let y = g(x)+1;
+		// 	return y;
+		// }
+		// //情况三等同于
+		// function f(x){
+		// 	g(x);
+		// 	return undefined;
+		// }
 		//尾调用优化
 		//函数调用会在内存形成一个调用记录，又称调用帧，保存调用位置和内部变量等信息。如果在函数A的内部调用函数B，那么在A的调用记录上方，还会形成一个B的调用记录。等到B运行结束，将结果返回到A，B的调用记录才会消失。如果函数B内部还调用函数C，那就还有一个C的调用记录栈，以此类推。所有的调用记录，就形成一个调用栈。
 		//尾调用由于是函数的最后一步操作，所以不需要保留外层函数的调用记录，因为调用位置、内部变量等信息都不会再用到了，只要直接用内层函数的调用记录，取代外层函数的调用记录就可以了，即只保留内层函数的调用记录。
