@@ -1,6 +1,14 @@
-var project = {
+let project = {
 	name:'ECMAScript6_learn',
 	author:'young',
 	createTime:'2015'
 }
-export {project};
+
+let num = 0;
+
+function increase(){
+	num++;
+}
+
+export default project.name;
+export {project,num,increase};
