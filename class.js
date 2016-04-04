@@ -1,6 +1,7 @@
 /**
  * class
  */
+'use strict';
 {
 	//let p1 = new Point(1,1);//class定义不存在变量提升，报错Point is not a function
 	class Point{
