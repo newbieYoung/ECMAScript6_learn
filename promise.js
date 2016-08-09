@@ -62,7 +62,7 @@
 	});
 	console.log('outer promise'); // 2
 }
-//promise结合generator使用，按顺序处理任务流 not work
+//promise结合generator使用，按顺序处理任务流
 {
 	function task(name){
 		return new Promise((resolve,reject)=>{
