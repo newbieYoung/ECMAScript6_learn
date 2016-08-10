@@ -3,6 +3,15 @@
  */
 'use strict';
 
+//使用误区
+{
+	let name = 'liy';
+	function showName(name){
+		console.log(name);
+	}
+	showName(`${name}`);//可以充当函数参数
+}
+
 //标签模版其实不是模板，而是函数调用的一种特殊形式；“标签”指的就是函数，紧跟在后面的模板字符串就是它的参数。
 {
 	let a = 4;
