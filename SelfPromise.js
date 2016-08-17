@@ -39,6 +39,28 @@ class SelfPromise{
 		this._rejectArr.push(reject);
 		return this;
 	}
+	catch(reject){
+		console.log('wait');
+	}
+	done(){
+
+	}
+	finally(){
+
+	}
+	//静态方法
+	static resolve(){
+
+	}
+	static reject(){
+
+	}
+	static all(){
+		
+	}
+	static race(){
+
+	}
 }
 
 //测试
@@ -61,3 +83,7 @@ timeout(1000).then(function(value){
 },function(error){
 	console.log(error);
 });
+
+SelfPromise.all();
+
+
