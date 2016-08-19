@@ -2,6 +2,12 @@
  * 数组相关
  */
 'use strict';
+//concat把传入的数组或非数组值与原数组合并,组成一个新的数组并返回
+{
+	let arr1 = [1,2];
+	let arr2 = [3,4];
+	console.log(arr1.concat(arr2));
+}
 //reverse把数组元素顺序颠倒
 {
 	let array = [0,1,2,3,4];
