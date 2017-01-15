@@ -1,5 +1,6 @@
 /**
- * 修饰器
+ * 装饰器
+ * 本质是利用了ES5的Object.defineProperty属性来实现的装饰器模式
  */
 'use strict';
 //修饰类
